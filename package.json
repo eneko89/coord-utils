@@ -1,0 +1,21 @@
+{
+  "name": "coord-utils",
+  "description": "Geographic coordinate conversion and validation.",
+  "author": "Eneko <contact@eneko.me>",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eneko89/coord-utils"
+  },
+  "keywords": [
+    "geographic",
+    "geo",
+    "coordinates",
+    "coords",
+    "coord",
+    "conversion",
+    "validation"
+  ],
+  "license": "MIT"
+}
