@@ -16,8 +16,8 @@ var coordUtils = require('coord-utils');
 var degMinLat = ,
 	degMinLng = ;
 
-// Retuns false if not valid DDDº MM.MM' coordinates and an the following
-// object if they are valid: { lat: ['DDD', 'MM.MM'], lng: ['DDD', 'MM.MM']}.
+// Retuns false if not valid DDDº MM.MM' coordinates and the following object
+// if they are valid: { lat: ['DDD', 'MM.MM'], lng: ['DDD', 'MM.MM'] }.
 var result = coordUtils.validCoords(degMinLat, degMinLng);
 
 // We convert them to decimal degrees.
@@ -31,8 +31,7 @@ degMinLng = coordUtils.decimalToDegrees(decimalLng);
 ```
 
 To use it in the browser, download index.js from a script tag or include it in
-your bundle. It will declare a 'coordUtils' global variable with the utility
-functions.
+your bundle. It will declare a 'coordUtils' global with the utility functions.
 
-For further info about those functions, see index.js. Its only about 100 lines
-long and half of them are JSDoc comments.
+For further info about those functions, look at index.js. It's only about 100
+lines long and half of them are JSDoc comments.
