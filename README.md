@@ -30,8 +30,8 @@ degMinLng = coordUtils.decimalToDegrees(decimalLng);
 
 ```
 
-To use it in the browser, download index.js from a <script> tag or include it
-in your bundle. It will declare a 'coordUtils' global variable with the utility
+To use it in the browser, download index.js from a script tag or include it in
+your bundle. It will declare a 'coordUtils' global variable with the utility
 functions.
 
 For further info about those functions, see index.js. Its only about 100 lines
