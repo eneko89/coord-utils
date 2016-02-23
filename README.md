@@ -13,20 +13,20 @@ Works both required as CommonsJS module in node or in the browser.
 
 var coordUtils = require('coord-utils');
 
-var degMinLat = ,
-	degMinLng = ;
+var degMinLat = "43º 15.78'",
+	degMinLng = "-2º 56.10'";
 
 // Retuns false if not valid DDDº MM.MM' coordinates and the following object
 // if they are valid: { lat: ['DDD', 'MM.MM'], lng: ['DDD', 'MM.MM'] }.
 var result = coordUtils.validCoords(degMinLat, degMinLng);
 
 // We convert them to decimal degrees.
-var decimalLat = coordUtils.degreesToDecimal(result.lat[0], result.lat[1]),
-    decimalLng = coordUtils.degreesToDecimal(result.lng[0], result.lng[1]);
+var decimalLat = coordUtils.degMinToDecimal(result.lat[0], result.lat[1]),
+    decimalLng = coordUtils.degMinToDecimal(result.lng[0], result.lng[1]);
 
 // And now, back to degrees and decimal minutes.
-degMinLat = coordUtils.decimalToDegrees(decimalLat),
-degMinLng = coordUtils.decimalToDegrees(decimalLng);
+degMinLat = coordUtils.decimalToDegMin(decimalLat),
+degMinLng = coordUtils.decimalToDegMin(decimalLng);
 
 ```
 

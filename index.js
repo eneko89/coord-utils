@@ -20,7 +20,7 @@
    * @return {String}       Coordinates in the DDDº MM.MM' format (degrees
    *                        and decimal minutes with two decimals).
    */
-  geoUtils.decimalToDegrees = function decimalToDegrees(dec) {
+  geoUtils.decimalToDegMin = function decimalToDegMin(dec) {
     var deg = Math.trunc(dec);
     var min = (dec - deg) * 60;
     if (min < 0) {
@@ -46,7 +46,7 @@
    *
    * @return {Number}
    */
-  geoUtils.degreesToDecimal = function degreesToDecimal(deg, min) {
+  geoUtils.degMinToDecimal = function degMinToDecimal(deg, min) {
     var dec = Math.abs(deg) + min/60.0;
     if (deg.charAt(0) === '-') {
       dec = -dec;
@@ -76,12 +76,13 @@
    */
   geoUtils.validCoords = function validCoords(lat, lng) {
 
-    // Regular expressions that match coordinates in DDDº MM.MM' format.
-    var latRegExp = /^(-?0*[1-8]?\d|-?0*90)(?:°|º)?\s+
-                    0*([1-5]?\d|60).(\d\d|\d)0*(?:'|′|´)?$/;
+    // Regular expression that matches latitude in DDº MM.MM' format.
+    var latRegExp = 
+      /^(-?0*[1-8]?\d|-?0*90)(?:°|º)?\s+0*([1-5]?\d|60).(\d\d|\d)0*(?:'|′|´)?$/;
 
-    var lngRegExp = /^(-?0*[1-9]?\d|-?0*1[0-7]\d|-?0*180)(?:°|º)?\s+
-                    0*([1-5]?\d|60).(\d\d|\d)0*(?:'|′|´)?$/;
+    // Regular expression that matches longitude in DDDº MM.MM' format.
+    var lngRegExp =
+      /^(-?0*[1-9]?\d|-?0*1[0-7]\d|-?0*180)(?:°|º)?\s+0*([1-5]?\d|60).(\d\d|\d)0*(?:'|′|´)?$/;
 
     // If both match, coordinates are valid. Extract numbers and return.
     if (latRegExp.test(lat) && lngRegExp.test(lng)) {
