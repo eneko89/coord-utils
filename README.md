@@ -14,7 +14,7 @@ Works both required as CommonsJS module in node or in the browser.
 var coordUtils = require('coord-utils');
 
 var degMinLat = "43º 15.78'",
-	degMinLng = "-2º 56.10'";
+    degMinLng = "-2º 56.10'";
 
 // Retuns false if not valid DDDº MM.MM' coordinates and the following object
 // if they are valid: { lat: ['DDD', 'MM.MM'], lng: ['DDD', 'MM.MM'] }.
