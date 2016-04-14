@@ -10,7 +10,7 @@
 
   'use strict';
 
-  var geoUtils = {};
+  var coordUtils = {};
 
   /**
    * Convert coordinates in decimal degrees to degrees and decimal minutes.
@@ -20,7 +20,7 @@
    * @return {String}       Coordinates in the DDDº MM.MM' format (degrees
    *                        and decimal minutes with two decimals).
    */
-  geoUtils.decimalToDegMin = function decimalToDegMin(dec) {
+  coordUtils.decimalToDegMin = function decimalToDegMin(dec) {
     var deg = Math.trunc(dec);
     var min = (dec - deg) * 60;
     if (min < 0) {
@@ -40,16 +40,22 @@
    * because a longitude of -0º 40.01' is N 0º 40.01' and 0º 40.01' is
    * S 0º 40.01'.
    *
-   * @param  {String}  deg  Degrees.
+   * @param  {String|Number}  deg  Degrees.
    *
-   * @param  {String}  min  Decimal minutes.
+   * @param  {String|Number}  min  Decimal minutes.
    *
    * @return {Number}
    */
-  geoUtils.degMinToDecimal = function degMinToDecimal(deg, min) {
+  coordUtils.degMinToDecimal = function degMinToDecimal(deg, min) {
     var dec = Math.abs(deg) + min/60.0;
-    if (deg.charAt(0) === '-') {
-      dec = -dec;
+    if (typeof deg === 'number') {
+      if (deg < 0) {
+        dec = -dec;
+      }
+    } else {
+      if (deg.charAt(0) === '-') {
+        dec = -dec;
+      }
     }
     return dec;
   }
@@ -74,7 +80,7 @@
    *                                that they are still in DD MM.MM format,
    *                                this method doesn't make any conversion.
    */
-  geoUtils.validCoords = function validCoords(lat, lng) {
+  coordUtils.validCoords = function validCoords(lat, lng) {
 
     // Regular expression that matches latitude in DDº MM.MM' format.
     var latRegExp = 
@@ -104,11 +110,11 @@
   if (typeof module !== 'undefined' && module.exports) {
 
     // Export as CommonJS module.
-    module.exports = geoUtils;
+    module.exports = coordUtils;
   } else {
 
-    // Export it as 'geoUtils' global variable.
-    this.geoUtils = geoUtils;
+    // Export it as 'coordUtils' global variable.
+    this.coordUtils = coordUtils;
   }
 
 }).call(this);
